@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Love Login by Shobhit</title>
-    <link rel="stylesheet" href="style.css" />
+    <!-- <title>Love Login by Shobhit</title> -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
@@ -21,7 +20,7 @@
         position: relative;
       }
 
-      #login-form {
+      /* #login-form {
         background: rgba(255, 255, 255, 0.2);
         padding: 30px 40px;
         border-radius: 15px;
@@ -33,11 +32,7 @@
         z-index: 10;
       }
 
-      img {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 15px;
-      }
+      
 
       button {
         background: #ff4d79;
@@ -48,12 +43,66 @@
         border-radius: 8px;
         cursor: pointer;
         transition: 0.3s;
-        margin-top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
       }
 
       button:hover {
         background: #ff2357;
         transform: scale(1.1);
+      }
+      #login-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+        background: #ff4d79;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      #login-btn:hover {
+        background: #ff2357;
+        transform: scale(1.1);
+      } */
+
+      #login-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+      }
+
+      #login-btn {
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      #login-btn:hover {
+        transform: scale(1.2);
+      }
+
+      /* Center the button */
+      #button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
 
       @keyframes fadeIn {
@@ -66,59 +115,21 @@
           transform: translateY(0);
         }
       }
-
-      .falling-emoji {
-        position: absolute;
-        font-size: 2em;
-        top: -50px;
-        animation: fall linear infinite;
-      }
-
-      @keyframes fall {
-        from {
-          transform: translateY(-50px);
-        }
-        to {
-          transform: translateY(100vh);
-        }
-      }
     </style>
   </head>
   <body>
     <form id="login-form">
-      <img src="logo.png" alt="Logo" />
-      <button id="login-btn">❤️</button>
+      <p>Click on this <button id="login-btn">❤️</button></p>
     </form>
-    <div id="result"></div>
+
     <script>
       const loginBtn = document.getElementById("login-btn");
       const nextPageUrl = "main.html";
 
       loginBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        localStorage.setItem("isLoggedIn", "true");
         window.location.href = nextPageUrl;
       });
-
-      document.addEventListener("DOMContentLoaded", () => {
-        if (localStorage.getItem("isLoggedIn") === "true") {
-          localStorage.removeItem("isLoggedIn");
-          window.location.href = "index.html"; // Redirect back to login page
-        }
-      });
-
-      function createFallingEmoji() {
-        const emojis = ["❤️", "💖", "💘", "💕", "💞", "💓", "💗", "😍"];
-        const emoji = document.createElement("div");
-        emoji.classList.add("falling-emoji");
-        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-        emoji.style.left = Math.random() * 100 + "vw";
-        emoji.style.animationDuration = Math.random() * 3 + 2 + "s";
-        document.body.appendChild(emoji);
-        setTimeout(() => emoji.remove(), 5000);
-      }
-
-      setInterval(createFallingEmoji, 500);
     </script>
   </body>
 </html>
